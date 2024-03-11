@@ -1,5 +1,5 @@
 pipeline {
-    agent { label "linux" }
+    agent { label "label" }
 
     stages {
         stage('Execute hello world script') {
