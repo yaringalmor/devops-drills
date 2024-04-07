@@ -1,0 +1,7 @@
+web_app:
+  port: 80
+  image: nginx
+  tag: latest
+  replicas: 3
+  content: |
+    <h1>Hello World - This is Yarin</h1>
