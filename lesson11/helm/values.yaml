@@ -4,4 +4,4 @@ web_app:
   tag: latest
   replicas: 3
   content: |
-    <h1>Hello World - This is Yarin</h1>
+    <h1>Hello World - This is Yarin - End of Demo</h1>
