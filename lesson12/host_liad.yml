@@ -1,6 +1,6 @@
 ---   
 webservers:
-hosts: 
+  hosts: 
       web-server-11:
       ansible_host: 172.31.7.55
       ansible_user: ec2-user
