@@ -1,8 +1,8 @@
 ---
-- hosts: web-server-11
+- hosts: web-server-29
   vars:
-    first_name: "Liad"
-    last_name: "Mazar"
+    first_name: "Yarin"
+    last_name: "Galmor"
   tasks:
     - name: Create name file
       copy:
