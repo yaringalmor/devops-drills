@@ -1,5 +1,5 @@
 ---
-- hosts: web-server-29
+- hosts: web-server-11
   vars:
     first_name: "Yarin"
     last_name: "Galmor"
