@@ -10,6 +10,6 @@
         content: |
           My name is {{ first_name }} {{ last_name }}
 
-    - name: Print hosts facts
-      debug:
-        var: ansible_facts
+#    - name: Print hosts facts
+#      debug:
+#        var: ansible_facts
