@@ -4,4 +4,4 @@ metadata:
   name: hello-world
 data:
   index.html: |
-    <h1>Hello World Only You</h1>
+    <h1>Hello World from k8s by Liad</h1>
