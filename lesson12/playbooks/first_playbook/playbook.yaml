@@ -1,0 +1,15 @@
+---
+- hosts: web-server-29
+  vars:
+    first_name: "Yarin"
+    last_name: "Galmor"
+  tasks:
+    - name: Create name file
+      copy:
+        dest: "~/name.txt"
+        content: |
+          My name is {{ first_name }} {{ last_name }}
+
+#    - name: Print hosts facts
+#      debug:
+#        var: ansible_facts
