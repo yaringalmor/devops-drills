@@ -1,0 +1,6 @@
+---
+- name: installations
+  import_tasks: installations.yaml
+
+- name: Clone devops-drills repo
+  import_tasks: clone_repo.yaml

@@ -1,0 +1,5 @@
+---
+- name: nginx_setup
+  hosts: web-server-29
+  roles:
+    - common

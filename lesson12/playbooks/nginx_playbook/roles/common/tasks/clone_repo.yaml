@@ -1,0 +1,5 @@
+---
+- name: Clone devops-drills repo
+  git:
+    repo: "https://github.com/yaringalmor/devops-drills.git"
+    dest: "{{ ansible_user_dir }}"
