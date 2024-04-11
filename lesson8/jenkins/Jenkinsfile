@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Execute hello world script') {
+            steps {
+                sh 'python3 lesson8/src/hello.py'
+            }
+        }
+    }
+}

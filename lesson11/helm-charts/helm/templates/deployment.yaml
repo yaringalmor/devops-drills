@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: {{ .Values.web_app.replicas}}
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      volumes:
+        - name: nginx-vol
+          configMap:
+            name: hello-world
+            items:
+              - key: index.html
+                path: index.html
+      containers:
+      - name: nginx
+        image: {{ .Values.web_app.image }}:{{ .Values.web_app.tag | default "latest" }}
+        ports:
+        - containerPort: {{ .Values.web_app.port }}
+        volumeMounts:
+          - name: nginx-vol
+            mountPath: /usr/share/nginx/html
