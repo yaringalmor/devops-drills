@@ -1,0 +1,22 @@
+---
+- name: Create nginx app dir
+  file:
+    name: "{{ nginx_app_dir }}"
+    state: directory
+
+- name: Set custom index.html file
+  template:
+    src: ../templates/index.html.j2
+    dest: "{{ nginx_app_dir }}/index.html"
+
+- name: Copy Docker files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ nginx_app_dir }}"
+  with_fileglob:
+    - "../files/*"
+
+- name: Build nginx custom image
+  command: "docker-compose build {{ nginx_compose_service_name }}"
+  args:
+    chdir: "{{ nginx_app_dir }}"

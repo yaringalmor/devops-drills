@@ -2,5 +2,13 @@
 - name: installations
   import_tasks: installations.yaml
 
-- name: Clone devops-drills repo
-  import_tasks: clone_repo.yaml
+- name: Build nginx app
+  import_tasks: build_nginx.yaml
+  tags:
+    - "skip_installation"
+
+- name: Start nginx app
+  import_tasks: start_nginx.yaml
+  tags:
+    - "skip_installation"
+    - "start_app"

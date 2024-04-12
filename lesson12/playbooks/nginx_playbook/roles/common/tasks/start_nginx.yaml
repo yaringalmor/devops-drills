@@ -1,0 +1,26 @@
+---
+- name: Start nginx app
+  command: "docker-compose up -d"
+  args:
+    chdir: "{{ nginx_app_dir }}"
+
+- name: Verify site availability
+  wait_for:
+    host: "{{ ansible_host }}"
+    port: 80
+  delegate_to: 127.0.0.1
+
+- name: Get site content
+  uri:
+    url: "http://{{ ansible_host }}"
+    return_content: true
+  delegate_to: 127.0.0.1
+  register: nginx_head_line
+
+- name: Validate nginx head line
+  assert:
+    that:
+      - nginx_head_line.content == head_line
+    fail_msg: "Nginx head line wasn't deployed correctly to host {{ inventory_hostname }}"
+    success_msg: "Nginx is up and ready - Browse http://{{ ansible_host }}"
+
