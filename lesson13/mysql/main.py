@@ -81,6 +81,20 @@ def delete_by_name(connection, table, name):
         print("Error deleting records:", e)
 
 
+def update_age_by_name(connection, table, name, new_age):
+    try:
+        cursor = connection.cursor()
+        update_query = f"""
+        UPDATE {table} SET age = %s WHERE name = %s
+        """
+        cursor.execute(update_query, (new_age, name))
+        connection.commit()
+        print("Age of", name, "updated to", new_age)
+        cursor.close()
+    except mysql.connector.Error as e:
+        print("Error updating age:", e)
+
+
 def close_connection(connection):
     try:
         if connection.is_connected():
@@ -100,8 +114,9 @@ def main():
     connection = connect_to_mysql(host, username, password, database)
     if connection:
         create_table(connection)
-        insert_data(connection, table, "Yarin", 30)
+        insert_data(connection, table, "Yarin", 20)
         query_above_age(connection, table, 25)
+        update_age_by_name(connection, table, "Yarin", 30)
         delete_by_name(connection, table, "Yarin")
         close_connection(connection)
 
