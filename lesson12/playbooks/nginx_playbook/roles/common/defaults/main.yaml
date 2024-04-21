@@ -1,0 +1,6 @@
+yum_packages:
+  - docker
+  - python-pip
+head_line: "<h1>Hello World, This is Yarin nginx app</h1>"
+nginx_app_dir: "{{ ansible_user_dir}}/app"
+nginx_compose_service_name: "web"

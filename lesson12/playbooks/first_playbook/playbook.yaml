@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 - hosts: web-server-11
+=======
+- hosts: all
+>>>>>>> main
   vars:
     first_name: "Liad"
     last_name: "Mazar"
@@ -8,7 +12,16 @@
       copy:
         dest: "~/name.txt"
         content: |
-          My name is {{ first_name }} {{ last_name }}
+          This is {{ first_name }} {{ last_name }}
+
+    - name: Fail task
+      fail:
+#      ignore_errors: true
+
+    - name: Hello world
+      debug:
+        msg: Hello world
+#      when: false
 
 #    - name: Print hosts facts
 #      debug:

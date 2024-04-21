@@ -1,0 +1,33 @@
+---
+- name: Install yum packages
+  yum:
+    name: "{{ yum_packages }}"
+    update_cache: true
+  become: true
+
+- name: Start docker service
+  service:
+    name: docker
+    state: started
+  become: yes
+
+- name: Enable docker service
+  service:
+    name: docker
+    enabled: true
+  become: yes
+
+- name: Add user to "docker" group
+  user:
+    name: "{{ ansible_user }}"
+    group: "docker"
+    append: yes
+  become: true
+
+- name: Install docker-compose command
+  get_url:
+    url : https://github.com/docker/compose/releases/download/1.25.1-rc1/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: '0755'
+  become: true
+

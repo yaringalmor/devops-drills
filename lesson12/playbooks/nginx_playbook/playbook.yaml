@@ -1,0 +1,5 @@
+---
+- name: nginx_setup
+  hosts: all
+  roles:
+    - common
